@@ -16,10 +16,10 @@ public class Verduras extends Produto {
 
     @Override
     public String toString() {
-        return "||=================================================================||\n"
-                + "Nome da Verdura 🥬   : " + getNome() +
-                "\nPreço             💵 : " + getPreco() +
-                "\nQuantidade        📦 : " + getQuantidade()+
-                "\nTipo              💵 : "+ this.tipo;
+        return
+                 "Nome        🥬 : " + getNome() +
+                "\nPreço      💵 : " + getPreco() +
+                "\nQuantidade 📦 : " + getQuantidade()+
+                "\nTipo       💵 : "+ this.tipo;
     }
 }

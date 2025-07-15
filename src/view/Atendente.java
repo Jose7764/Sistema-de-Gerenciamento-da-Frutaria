@@ -20,15 +20,9 @@ public class Atendente {
         System.out.println("||-----------------------------------------------------------------||");
         System.out.println("||                      Frutaria Do Cubano                         ||");
         System.out.println("||-----------------------------------------------------------------||");
-        System.out.println("|| 1- Cadastrar Fruta   \uD83C\uDF4C                                         ||");
-        System.out.println("|| 2- Listar Fruta      \uD83D\uDDD1\uFE0F                                         ||");
-        System.out.println("|| 3- Remover Fruta     \uD83D\uDCCB                                         ||");
-        System.out.println("|| 4- Cadastrar Verdura \uD83E\uDD66                                         ||");
-        System.out.println("|| 5- Listar Verdura    \uD83D\uDCD1                                         ||");
-        System.out.println("|| 6- Remover Verdura   \uD83D\uDEAB                                         ||");
-        System.out.println("|| 4- Cadastrar Produto \uD83D\uDCE6                                         ||");
-        System.out.println("|| 5- Listar Produto    \uD83D\uDCEB                                         ||");
-        System.out.println("|| 6- Remover Produto   ❌                                         ||");
+        System.out.println("|| 1- Cadastrar Produto \uD83D\uDCE6                                         ||");
+        System.out.println("|| 2- Listar Produto    \uD83D\uDCEB                                         ||");
+        System.out.println("|| 3- Remover Produto   ❌                                         ||");
         System.out.println("||                                                    0 \uD83D\uDD1A - Sair  ||");
         System.out.println("||-----------------------------------------------------------------||");
 
@@ -39,6 +33,62 @@ public class Atendente {
 
         return escolha;
 
+    }
+
+    public int escolhaTipoProduto() {
+        System.out.println("||-----------------------------------------------------------------||");
+        System.out.println("||                  Qual Produto deseja Cadastrar?                 ||");
+        System.out.println("||-----------------------------------------------------------------||");
+        System.out.println("|| 1- Fruta \uD83C\uDF4E                                                      ||");
+        System.out.println("|| 2- Verdura 🥬                                                    ||");
+        System.out.println("||-----------------------------------------------------------------||");
+
+        System.out.print("|| - ");
+        int escolha = input.nextInt();
+
+        return escolha;
+    }
+
+    public void frutaCadastrada() {
+
+        System.out.println("||-----------------------------------------------------------------||");
+        System.out.println("||                Fruta Cadastrada com Sucesso!                    ||");
+        System.out.println("||-----------------------------------------------------------------||");
+
+    }
+
+    public void verduraCadastrada() {
+
+        System.out.println("||-----------------------------------------------------------------||");
+        System.out.println("||                Fruta Cadastrada com Sucesso!                    ||");
+        System.out.println("||-----------------------------------------------------------------||");
+
+    }
+
+    public int listarEscolha() {
+        System.out.println("||-----------------------------------------------------------------||");
+        System.out.println("||                       O que deseja Listar?                      ||");
+        System.out.println("||-----------------------------------------------------------------||");
+        System.out.println("|| 1- Fruta \uD83C\uDF4E                                                      ||");
+        System.out.println("|| 2- Verdura 🥬                                                    ||");
+        System.out.println("|| 3- Produto \uD83D\uDCE6                                                    ||");
+        System.out.println("||-----------------------------------------------------------------||");
+
+        System.out.print("|| - ");
+        int escolha = input.nextInt();
+        System.out.println("||-----------------------------------------------------------------||");
+        return escolha;
+    }
+
+    public int removerEscolha() {
+        System.out.println("||-----------------------------------------------------------------||");
+        System.out.println("||                      O que deseja Remover?                      ||");
+        System.out.println("||-----------------------------------------------------------------||");
+
+        System.out.print("|| - ");
+        int escolha = input.nextInt();
+        System.out.println("||-----------------------------------------------------------------||");
+        return escolha;
     }
 
     public String CadastrarNome() {
@@ -71,7 +121,6 @@ public class Atendente {
     }
 
     public String CadastrarTipo() {
-        System.out.println("||-----------------------------------------------------------------||");
         System.out.print("|| Insira o tipo:\n|| - ");
         String tipo = input.next();
 
@@ -79,13 +128,19 @@ public class Atendente {
     }
 
 
-
-    public void escolhaExcluir() {
+    public void Erro () {
 
         System.out.println("||-----------------------------------------------------------------||");
-        System.out.println("||                   Qual Fruta deseja Remover?                    ||");
+        System.out.println("||                  Digite uma opção valida!                       ||");
         System.out.println("||-----------------------------------------------------------------||");
+    }
 
+
+    public void ListaVacia () {
+
+        System.out.println("||-----------------------------------------------------------------||");
+        System.out.println("||                         Estoque vacio!                          ||");
+        System.out.println("||-----------------------------------------------------------------||");
     }
 
     public int escolherFrutaExcluir() {

@@ -14,6 +14,10 @@ public class Main {
 
             int opcao = atendente.menuPrincipal();
 
+            if (opcao > 3 && opcao < 0) {
+                atendente.Erro();
+                return;
+            }
             estoque.gerenciarEstoque(opcao);
 
             if(opcao == 0){

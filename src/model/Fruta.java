@@ -14,10 +14,10 @@ public class Fruta extends Produto {
 
     @Override
     public String toString() {
-        return "||-----------------------------------------------------------------||\n"
-                + "Nome      : " + getNome() +
-                "\nPreço     : " + getPreco() +
-                "\nQuantidade: " + getQuantidade()+
-                "\nPeso      : " + this.peso;
+        return
+                "Nome       \uD83C\uDF4E: " + getNome() +
+                "\nPreço      💵: " + getPreco() +
+                "\nQuantidade 📦: " + getQuantidade()+
+                "\nPeso       💵: " + this.peso;
     }
 }

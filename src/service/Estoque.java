@@ -25,29 +25,91 @@ public class Estoque {
         switch (opcao) {
 
             case 1:
-                String nomeFruta = atendente.CadastrarNome();
-                double precoFruta = atendente.CadastrarPreco();
-                int quantidadeFruta = atendente.CadastrarQuantidade();
-                double pesoFruta = atendente.CadastrarPeso();
+                int escolha = atendente.escolhaTipoProduto();
 
-                fruta = new Fruta(nomeFruta, precoFruta, quantidadeFruta, pesoFruta);
-                estoqueProdutos.add(fruta);
+                if (opcao > 2 && opcao < 1) {
+                    atendente.Erro();
+                    return;
+                }
+                switch (escolha) {
+                    case 1:
+                        String nomeFruta = atendente.CadastrarNome();
+                        double precoFruta = atendente.CadastrarPreco();
+                        int quantidadeFruta = atendente.CadastrarQuantidade();
+                        double pesoFruta = atendente.CadastrarPeso();
+
+                        fruta = new Fruta(nomeFruta, precoFruta, quantidadeFruta, pesoFruta);
+                        estoqueProdutos.add(fruta);
+
+                        atendente.frutaCadastrada();
+                        break;
+
+                    case 2:
+
+                        String nomeVerdura = atendente.CadastrarNome();
+                        double precoVerdura = atendente.CadastrarPreco();
+                        int quantidadeVerdura = atendente.CadastrarQuantidade();
+                        String tipo = atendente.CadastrarTipo();
+
+                        verduras = new Verduras(nomeVerdura, precoVerdura, quantidadeVerdura, tipo);
+                        estoqueProdutos.add(verduras);
+
+                        atendente.verduraCadastrada();
+                        break;
+                }
 
                 break;
 
             case 2:
 
-                for (Produto frutasListadas : estoqueProdutos ) {
+                int escolhaListar = atendente.listarEscolha();
 
-                    System.out.println(frutasListadas);
-                    System.out.println("---------------");
+                if (estoqueProdutos.isEmpty()) {
+                    atendente.ListaVacia();
                 }
-                Thread.sleep(2000);
+
+                if (opcao > 3 && opcao < 0) {
+                    atendente.Erro();
+                    return;
+                }
+                switch (escolhaListar) {
+                    case 1:
+
+                        for (Produto produto : estoqueProdutos) {
+                            if (produto instanceof Fruta fruta) {
+                                System.out.println(fruta);
+                            }
+                        }
+
+                        break;
+
+                    case 2:
+
+                        for(Produto produto : estoqueProdutos) {
+                            if (produto instanceof Verduras verduras) {
+                                System.out.println(verduras);
+                            }
+                        }
+
+                         break;
+
+                    case 3:
+                        for (Produto produtosListados : estoqueProdutos ) {
+
+                            System.out.println(produtosListados);
+                            System.out.println("---------------");
+                        }
+                        Thread.sleep(2000);
+                         break;
+                }
+
+
                 break;
+
 
             case 3:
 
-                atendente.escolhaExcluir();
+
 
                 for (int cont = 0; cont < 1; cont++) {
                     int contador = 1;
@@ -58,51 +120,18 @@ public class Estoque {
                     }
                 }
 
-                int itemRemover =	atendente.escolherFrutaExcluir();
-                int itemAtualizado = itemRemover -1;
-                estoqueProdutos.remove(itemAtualizado);
+                int produtoRemover = atendente.removerEscolha();
 
-                System.out.println("|------------------------|");
+                if (produtoRemover > estoqueProdutos.size() && opcao < 0) {
+                    atendente.Erro();
+                    return;
+                }
+
+                int produtoAtualizado = produtoRemover -1;
+                estoqueProdutos.remove(produtoAtualizado);
 
                 atendente.atualizarEstoque();
 
-                for (int cont = 0; cont < 1; cont++) {
-                    int contador = 1;
-                    for (Produto a: estoqueProdutos) {
-
-                        System.out.println( + contador + " - "+ a.getNome());
-                        contador++;
-                    }
-                }
-                break;
-
-            case 4:
-
-                String nomeVerdura = atendente.CadastrarNome();
-                double precoVerdura = atendente.CadastrarPreco();
-                int quantidadeVerdura = atendente.CadastrarQuantidade();
-                String tipo = atendente.CadastrarTipo();
-
-                verduras = new Verduras(nomeVerdura, precoVerdura, quantidadeVerdura, tipo);
-                estoqueProdutos.add(verduras);
-
-                break;
-
-            case 5:
-
-                break;
-
-            case 6:
-
-                break;
-
-            case 7:
-
-                break;
-            case 8:
-
-                break;
-            case 9:
 
                 break;
 
