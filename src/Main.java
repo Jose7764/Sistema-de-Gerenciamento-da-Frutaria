@@ -2,6 +2,8 @@ import view.Atendente;
 import service.Estoque;
 import model.Fruta;
 
+import java.util.InputMismatchException;
+
 public class Main {
 
     public static void main(String[] args) throws InterruptedException {
@@ -10,29 +12,27 @@ public class Main {
         Atendente atendente = new Atendente();
         Fruta fruta = new Fruta();
 
-        while (true) {
 
-            int opcao = atendente.menuPrincipal();
 
-            if (opcao > 3 && opcao < 0) {
+        try {
+                while (true) {
+
+                    int opcao = atendente.menuPrincipal();
+
+
+                    if (opcao > 3 || opcao < 0) {
+                        atendente.Erro();
+                        continue;
+                    }
+                    estoque.gerenciarEstoque(opcao);
+
+                    if(opcao == 0){
+                        break;
+                    }
+                }
+            } catch (InputMismatchException erro) {
                 atendente.Erro();
-                return;
+                main(args);
             }
-            estoque.gerenciarEstoque(opcao);
-
-            if(opcao == 0){
-                break;
-            }
-
-
         }
-
-
-
-
-
-
-
-    }
-
 }

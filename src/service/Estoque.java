@@ -27,7 +27,7 @@ public class Estoque {
             case 1:
                 int escolha = atendente.escolhaTipoProduto();
 
-                if (opcao > 2 && opcao < 1) {
+                if (escolha > 2 || escolha < 1) {
                     atendente.Erro();
                     return;
                 }
@@ -68,7 +68,7 @@ public class Estoque {
                     atendente.ListaVacia();
                 }
 
-                if (opcao > 3 && opcao < 0) {
+                if (opcao > 3 || opcao < 0) {
                     atendente.Erro();
                     return;
                 }
@@ -109,30 +109,32 @@ public class Estoque {
 
             case 3:
 
+                if (estoqueProdutos.isEmpty()) {
+                    atendente.ListaVacia();
+                }else {
 
+                    for (int cont = 0; cont < 1; cont++) {
+                        int contador = 1;
+                        for (Produto a : estoqueProdutos) {
 
-                for (int cont = 0; cont < 1; cont++) {
-                    int contador = 1;
-                    for (Produto a: estoqueProdutos) {
-
-                        System.out.println( "|| "+ contador + " - "+ a.getNome());
-                        contador++;
+                            System.out.println("|| " + contador + " - " + a.getNome());
+                            contador++;
+                        }
                     }
+
+                    int produtoRemover = atendente.removerEscolha();
+
+                    if (produtoRemover > estoqueProdutos.size() || opcao <= 0) {
+                        atendente.Erro();
+                        return;
+                    }
+
+                    int produtoAtualizado = produtoRemover - 1;
+                    estoqueProdutos.remove(produtoAtualizado);
+
+                    atendente.atualizarEstoque();
+
                 }
-
-                int produtoRemover = atendente.removerEscolha();
-
-                if (produtoRemover > estoqueProdutos.size() && opcao < 0) {
-                    atendente.Erro();
-                    return;
-                }
-
-                int produtoAtualizado = produtoRemover -1;
-                estoqueProdutos.remove(produtoAtualizado);
-
-                atendente.atualizarEstoque();
-
-
                 break;
 
             case 0:
